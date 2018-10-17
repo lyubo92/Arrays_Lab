@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class equalArrays {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String firstInput = input.nextLine();
+        String secondInput = input.nextLine();
+        String[] firsArray = firstInput.split(" ");
+        String[] secondArray = secondInput.split(" ");
+        int[] firstNumbers = new int[firsArray.length];
+        int[] secondNumbers = new int[secondArray.length];
+        for (int i = 0; i < firsArray.length; i++) {
+            firstNumbers[i] = Integer.parseInt(firsArray[i]);
+        }
+        for (int i = 0; i < secondArray.length; i++) {
+            secondNumbers[i] = Integer.parseInt(secondArray[i]);
+        }
+        int sum = 0;
+        int maxLenght = Math.max(firstNumbers.length, secondNumbers.length);
+        boolean isEqual = true;
+        for (int i = 0; i < maxLenght; i++) {
+            sum += firstNumbers[i];
+            if (firstNumbers[i] != secondNumbers[i]){
+                System.out.println("Arrays are not identical. Found difference at " + i + " index.");
+                isEqual = false;
+                break;
+            }
+        }
+        if (isEqual == true){
+            System.out.println("Arrays are identical. Sum: " + sum);
+        }
+    }
+}
