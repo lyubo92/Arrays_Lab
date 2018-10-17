@@ -1,0 +1,37 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class encryptSortAndPrintArray {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int numStrings = Integer.parseInt(input.nextLine());
+        int[] sortingArray = new int[numStrings];
+        for (int i = 0; i < numStrings; i++) {
+            String line = input.nextLine();
+            int sum = 0;
+            for (int j = 0; j < line.length(); j++) {
+                char letter = line.charAt(j);
+                if (letter == 65 || letter == 69 || letter == 73 || letter == 79 || letter == 85 ||
+                        letter == 97 || letter == 101 || letter == 105 || letter == 111 || letter == 117) {
+                    sum += letter * line.length();
+                } else {
+                    sum += letter / line.length();
+                }
+                sortingArray[i] = sum;
+            }
+        }
+        for (int i = 0; i < sortingArray.length - 1; i++) {
+            int temporary = 0;
+            for (int j = i + 1; j < sortingArray.length; j++) {
+                if (sortingArray[i] > sortingArray[j]) {
+                    temporary = sortingArray[i];
+                    sortingArray[i] = sortingArray[j];
+                    sortingArray[j] = temporary;
+                }
+            }
+        }
+        for (int i = 0; i < numStrings; i++) {
+            System.out.println(sortingArray[i]);
+        }
+    }
+}
